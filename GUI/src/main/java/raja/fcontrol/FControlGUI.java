@@ -84,6 +84,9 @@ class DashboardFrame extends javax.swing.JFrame {
                 }
                 printDialog.dispose();
                 break;
+            case 4:
+                attentionDialog.dispose();
+                break;
             default:
                 break;
         }
@@ -478,7 +481,7 @@ class DashboardFrame extends javax.swing.JFrame {
 
 class Server implements Runnable {
 
-    private String incoming_data;
+    private String incoming_data = " ";
     private boolean updated = false;
 
     public synchronized String getData() {

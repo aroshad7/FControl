@@ -1,9 +1,10 @@
 # Import FPDF class
 from fpdf import FPDF
+import os
 
 # Create instance of FPDF class
 # Letter size paper, use inches as unit of measure
-pdf = FPDF(format='letter', unit='in')
+pdf = FPDF(format='A4', unit='in')
 
 # Add new page. Without this you cannot create the document.
 pdf.add_page()
@@ -45,6 +46,10 @@ def print_pdf(data):
         pdf.ln(1.5 * th)
 
     pdf.output('attendance.pdf', 'F')
+    try:
+        os.system("lpr -P TOSHIBA_TOSHIBA_e-STUDIO205Series attendance.pdf")
+    except Exception as e:
+        print("Error occurred while adding the file to the printer queue")
 
 
 def print_attendance_sheet(available_people, database):
